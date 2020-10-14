@@ -1,0 +1,22 @@
+#root {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1700px;
+}
+
+.sliders {
+  height: 100%;
+}
+
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: lightyellow;
+  color: white;
+  overflow: hidden;
+}
+
+.boxes div {
+  background-color: lightskyblue;
+  border: 0px solid black;
+}
