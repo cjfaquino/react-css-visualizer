@@ -1,22 +1,33 @@
-#root {
+* {
+  box-sizing: border-box;
+}
+
+html {
   margin: 0 auto;
   width: 100%;
-  max-width: 1700px;
 }
 
 .sliders {
-  height: 100%;
+  height: auto;
+  background: white;
+  padding: 30px;
 }
 
 .boxes {
+  position: fixed;
+  top: 25%;
+  left: 40%;
+}
+
+.box {
   display: flex;
-  flex-wrap: wrap;
-  background-color: lightyellow;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 226, 148);
   color: white;
   overflow: hidden;
 }
 
-.boxes div {
+.box div {
   background-color: lightskyblue;
-  border: 0px solid black;
 }

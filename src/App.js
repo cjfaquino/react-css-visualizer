@@ -1,13 +1,12 @@
 import React from 'react';
 import './App.css';
 
-import Slidertest from './Components/slidertest';
+import Slider from './Components/Sliders';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header"></header>
-      <Slidertest />
+      <Slider />
     </div>
   );
 }
