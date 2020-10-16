@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { ChromePicker } from 'react-color';
+import Boxes from './Boxes';
 
 const useSlider = (min, max, defaultState, label, id, unit) => {
   const [state, setSlide] = useState(defaultState);
@@ -20,7 +22,7 @@ const useSlider = (min, max, defaultState, label, id, unit) => {
   return props;
 };
 
-export default function App() {
+function App(props) {
   //create sliders
   const marginTop = useSlider(0, 100, 25, 'Margin Top', 'marginTop', 'px'),
     marginRight = useSlider(0, 100, 25, 'Margin Right', 'marginRight', 'px'),
@@ -40,11 +42,12 @@ export default function App() {
     shadowBlur = useSlider(0, 50, 0, 'Shadow Blur', 'shadowBlur', 'px'),
     shadowSpread = useSlider(0, 50, 0, 'Shadow Spread', 'shadowSpread', 'px');
 
-  const translateX = useSlider(-100, 100, 0, 'translate X', 'translateX', 'px'),
-    translateY = useSlider(-100, 100, 0, 'translate Y', 'translateY', 'px');
+  const translateX = useSlider(-100, 100, 0, 'Translate X', 'translateX', 'px'),
+    translateY = useSlider(-100, 100, 0, 'Translate Y', 'translateY', 'px');
 
   const height = useSlider(0, 500, 100, 'Height', 'height', 'px'),
-    width = useSlider(0, 500, 100, 'Width', 'width', 'px');
+    width = useSlider(0, 1500, 100, 'Width', 'width', 'px');
+
   //array everything for markup
   const input = [
     marginTop,
@@ -87,7 +90,11 @@ export default function App() {
     translate = markup.slice(14, 16),
     size = markup.slice(16, 18);
 
+  //Color Picker config
+  const [color, setColor] = useState('#3C6AAA');
+
   const styles = {
+    backgroundColor: color,
     margin: `${marginTop.value}px ${marginRight.value}px ${marginBottom.value}px ${marginLeft.value}px`,
     padding: `${paddingTop.value}px ${paddingRight.value}px ${paddingBottom.value}px ${paddingLeft.value}px`,
     borderRadius: `${borderRadiusP.value}%`,
@@ -101,23 +108,12 @@ export default function App() {
   return (
     <div>
       <h1>CSS Visualizer</h1>
-      <div className="boxes">
-        <div className="box">
-          <div style={styles}>Test</div>
-          <div style={styles}>Test</div>
-          <div style={styles}>Test</div>
-        </div>
-        <div className="box">
-          <div style={styles}>Test</div>
-          <div style={styles}>Test</div>
-          <div style={styles}>Test</div>
-        </div>
-        <div className="box">
-          <div style={styles}>Test</div>
-          <div style={styles}>Test</div>
-          <div style={styles}>Test</div>
-        </div>
-      </div>
+      <ChromePicker
+        color={color}
+        onChange={(color) => {
+          setColor(color.hex);
+        }}
+      />
       <div className="sliders">
         <div>
           <h3>Size</h3>
@@ -144,6 +140,9 @@ export default function App() {
           {translate}
         </div>
       </div>
+      <Boxes style={styles} />
     </div>
   );
 }
+
+export default App;

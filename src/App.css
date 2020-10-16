@@ -1,26 +1,36 @@
 * {
   box-sizing: border-box;
+  margin: 0 auto;
 }
 
-html {
-  margin: 0 auto;
-  width: 100%;
+h1 {
+  text-align: center;
+}
+
+.chrome-picker {
+  padding: 0 !important;
 }
 
 .sliders {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   height: auto;
-  background: white;
+  background: rgb(112, 112, 112);
   padding: 30px;
 }
 
+.sliders div {
+  padding: 0 0.5em;
+}
+
 .boxes {
-  position: fixed;
-  top: 25%;
-  left: 40%;
+  height: 100%;
 }
 
 .box {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   background-color: rgb(255, 226, 148);
