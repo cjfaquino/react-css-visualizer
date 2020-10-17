@@ -25,7 +25,7 @@ function App(props) {
   const color = props.color;
   const styles = {
     color: {
-      width: '160px',
+      width: '80px',
       height: '15px',
       borderRadius: '2px',
       background: `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`,
