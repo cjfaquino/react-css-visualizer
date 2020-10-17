@@ -142,37 +142,6 @@ function App(props) {
     textShadow = markup.slice(22, 25),
     font = markup.slice(25, 27);
 
-  const Margin = () => (
-    <div>
-      <h3>Margin</h3>
-      {margin}
-    </div>
-  );
-  const Padding = () => (
-    <div>
-      <h3>Padding</h3>
-      {padding}
-    </div>
-  );
-  const Transform = () => (
-    <div>
-      <h3>Transform</h3>
-      {transform}
-    </div>
-  );
-  const TextShadow = () => (
-    <div>
-      <h3>Text-shadow</h3>
-      {textShadow}
-    </div>
-  );
-  const BoxShadow = () => (
-    <div>
-      <h3>Box-shadow</h3>
-      {boxShadow}
-    </div>
-  );
-
   // box styles
   const styles = {
     backgroundColor: `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`,
@@ -228,8 +197,14 @@ function App(props) {
             />
           </h3>
         </div>
-        <Margin />
-        <Padding />
+        <div>
+          <h3>Margin</h3>
+          {margin}
+        </div>
+        <div>
+          <h3>Padding</h3>
+          {padding}
+        </div>
         <div>
           <h3>Border</h3>
           {border}
@@ -244,9 +219,18 @@ function App(props) {
             />
           </h3>
         </div>
-        <TextShadow />
-        <BoxShadow />
-        <Transform />
+        <div>
+          <h3>Text-shadow</h3>
+          {textShadow}
+        </div>
+        <div>
+          <h3>Box-shadow</h3>
+          {boxShadow}
+        </div>
+        <div>
+          <h3>Transform</h3>
+          {transform}
+        </div>
       </div>
       <Boxes style={styles} bgStyle={bgStyle} />
     </div>
