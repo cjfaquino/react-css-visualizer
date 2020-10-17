@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { SketchPicker } from 'react-color';
+import { ChromePicker } from 'react-color';
 
-function SketchExample(props) {
-  const [color, setColor] = useState({
-    r: '241',
-    g: '112',
-    b: '19',
-    a: '1',
-  });
+function App(props) {
+  // const [color, setColor] = useState({
+  //   r: '241',
+  //   g: '112',
+  //   b: '19',
+  //   a: '1',
+  // });
+
   const [displayColorPicker, setDisplayColorPicker] = useState(false);
 
   const handleClick = () => {
@@ -18,22 +19,22 @@ function SketchExample(props) {
     setDisplayColorPicker(false);
   };
 
-  const handleChange = (color) => {
-    setColor(color.rgb);
-  };
-
+  // const handleChange = (color) => {
+  //   setColor(color.rgb);
+  // };
+  const color = props.color;
   const styles = {
     color: {
-      width: '36px',
-      height: '14px',
+      width: '160px',
+      height: '15px',
       borderRadius: '2px',
       background: `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`,
     },
     swatch: {
-      padding: '5px',
-      background: '#fff',
+      padding: '.125em',
+      background: '#ccc',
       borderRadius: '1px',
-      boxShadow: '0 0 0 1px rgba(0,0,0,.1)',
+      // boxShadow: '0 0 0 1px rgba(0,0,0,.1)',
       display: 'inline-block',
       cursor: 'pointer',
     },
@@ -49,7 +50,6 @@ function SketchExample(props) {
       left: '0px',
     },
   };
-  console.log(color);
   return (
     <div>
       <div style={styles.swatch} onClick={handleClick}>
@@ -58,11 +58,11 @@ function SketchExample(props) {
       {displayColorPicker ? (
         <div style={styles.popover}>
           <div style={styles.cover} onClick={handleClose} />
-          <SketchPicker color={color} onChange={handleChange} />
+          <ChromePicker color={props.color} onChange={props.handleChange} />
         </div>
       ) : null}
     </div>
   );
 }
 
-export default SketchExample;
+export default App;

@@ -11,25 +11,11 @@ h1 {
   display: grid;
   grid-gap: 20px;
   grid-template-columns: repeat(auto-fit, 186px);
-  justify-content: center;
-}
-
-.grid > * {
-  background-color: green;
-  min-width: 186px;
-  height: 100%;
-}
-
-.chrome-picker {
-  padding: 0 !important;
+  justify-content: space-evenly;
 }
 
 .sliders {
   padding: 1em 0;
-  background: rgb(112, 112, 112);
-}
-
-.sliders div {
 }
 
 .boxes {
@@ -37,15 +23,13 @@ h1 {
 }
 
 .box {
+  text-align: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  background-color: rgb(255, 226, 148);
   color: white;
   overflow: hidden;
-}
-
-.box div {
-  background-color: lightskyblue;
+  transition: ease-in-out 1000ms;
+  /* transform: translate(50%, 50%) rotate3d(0.5, 0.5, 0.5, 90deg); */
 }
