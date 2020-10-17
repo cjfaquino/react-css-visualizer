@@ -1,8 +1,33 @@
 import React, { useState } from 'react';
 import Boxes from './Boxes';
 import ColorPicker from './ColorPicker';
+import './slider.css';
 
 function App(props) {
+  //Color Picker config
+  // BOX color
+  const [color, setColor] = useState({
+    r: '116',
+    g: '179',
+    b: '233',
+    a: '1',
+  });
+
+  // background color
+  const [color2, setColor2] = useState({
+    r: '240',
+    g: '240',
+    b: '240',
+    a: '1',
+  });
+  // font color
+  const [color3, setColor3] = useState({
+    r: '255',
+    g: '255',
+    b: '255',
+    a: '1',
+  });
+
   // Slider config
   const useSlider = (min, max, defaultState, label, id, unit) => {
     const [state, setSlide] = useState(defaultState);
@@ -96,13 +121,13 @@ function App(props) {
 
   // Style markup with .map
   const markup = input.map((e) => (
-    <div key={e.id}>
-      <label>
+    <div key={e.id} className="slider">
+      <label htmlFor={e.id}>
         {e.label}: {e.value}
         {e.unit}
       </label>
       <div>
-        <input {...e} />
+        <input {...e} name={e.id} />
       </div>
     </div>
   ));
@@ -117,29 +142,36 @@ function App(props) {
     textShadow = markup.slice(22, 25),
     font = markup.slice(25, 27);
 
-  //Color Picker config
-  // BOX color
-  const [color, setColor] = useState({
-    r: '116',
-    g: '179',
-    b: '233',
-    a: '1',
-  });
-
-  // background color
-  const [color2, setColor2] = useState({
-    r: '240',
-    g: '240',
-    b: '240',
-    a: '1',
-  });
-  // font color
-  const [color3, setColor3] = useState({
-    r: '255',
-    g: '255',
-    b: '255',
-    a: '1',
-  });
+  const Margin = () => (
+    <div>
+      <h3>Margin</h3>
+      {margin}
+    </div>
+  );
+  const Padding = () => (
+    <div>
+      <h3>Padding</h3>
+      {padding}
+    </div>
+  );
+  const Transform = () => (
+    <div>
+      <h3>Transform</h3>
+      {transform}
+    </div>
+  );
+  const TextShadow = () => (
+    <div>
+      <h3>Text-shadow</h3>
+      {textShadow}
+    </div>
+  );
+  const BoxShadow = () => (
+    <div>
+      <h3>Box-shadow</h3>
+      {boxShadow}
+    </div>
+  );
 
   // box styles
   const styles = {
@@ -167,11 +199,11 @@ function App(props) {
   return (
     <div>
       <h1>CSS Visualizer</h1>
-      <div className="sliders grid">
+      <div className="sliders grid container">
         <div>
           <h3>Size</h3>
           {size}
-          <h3>
+          <h3 className="colorPicker">
             Box Color{' '}
             <ColorPicker
               setColor={color}
@@ -185,7 +217,7 @@ function App(props) {
         <div>
           <h3>Font</h3>
           {font}
-          <h3>
+          <h3 className="colorPicker">
             Font Color{' '}
             <ColorPicker
               setColor={color3}
@@ -196,30 +228,12 @@ function App(props) {
             />
           </h3>
         </div>
-        <div>
-          <h3>Text-shadow</h3>
-          {textShadow}
-        </div>
-        <div>
-          <h3>Box-shadow</h3>
-          {boxShadow}
-        </div>
-        <div>
-          <h3>Margin</h3>
-          {margin}
-        </div>
-        <div>
-          <h3>Padding</h3>
-          {padding}
-        </div>
-        <div>
-          <h3>Transform</h3>
-          {transform}
-        </div>
+        <Margin />
+        <Padding />
         <div>
           <h3>Border</h3>
           {border}
-          <h3>
+          <h3 className="colorPicker">
             Background Color{' '}
             <ColorPicker
               setColor={color2}
@@ -230,6 +244,9 @@ function App(props) {
             />
           </h3>
         </div>
+        <TextShadow />
+        <BoxShadow />
+        <Transform />
       </div>
       <Boxes style={styles} bgStyle={bgStyle} />
     </div>

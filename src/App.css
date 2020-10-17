@@ -3,21 +3,29 @@
   margin: 0 auto;
 }
 
+.container {
+  max-width: 1500px;
+}
+
 h1 {
   text-align: center;
+  margin: 1em;
 }
 
 .grid {
   display: grid;
-  grid-gap: 20px;
-  grid-template-columns: repeat(auto-fit, 186px);
-  justify-content: space-evenly;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, 165px);
+  justify-content: space-between;
 }
 
 .sliders {
-  padding: 1em 0;
+  padding: 0 1em;
 }
 
+.slider {
+  min-width: 150px;
+}
 .boxes {
   height: 100%;
 }
@@ -31,5 +39,4 @@ h1 {
   color: white;
   overflow: hidden;
   transition: ease-in-out 1000ms;
-  /* transform: translate(50%, 50%) rotate3d(0.5, 0.5, 0.5, 90deg); */
 }

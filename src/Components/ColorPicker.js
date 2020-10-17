@@ -51,7 +51,7 @@ function App(props) {
     },
   };
   return (
-    <div>
+    <div className="colorPicker">
       <div style={styles.swatch} onClick={handleClick}>
         <div style={styles.color} />
       </div>
