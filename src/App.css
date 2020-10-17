@@ -7,21 +7,29 @@ h1 {
   text-align: center;
 }
 
+.grid {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, 186px);
+  justify-content: center;
+}
+
+.grid > * {
+  background-color: green;
+  min-width: 186px;
+  height: 100%;
+}
+
 .chrome-picker {
   padding: 0 !important;
 }
 
 .sliders {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  height: auto;
+  padding: 1em 0;
   background: rgb(112, 112, 112);
-  padding: 30px;
 }
 
 .sliders div {
-  padding: 0 0.5em;
 }
 
 .boxes {

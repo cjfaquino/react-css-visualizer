@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChromePicker } from 'react-color';
 import Boxes from './Boxes';
+import Test from './test';
 
 const useSlider = (min, max, defaultState, label, id, unit) => {
   const [state, setSlide] = useState(defaultState);
@@ -91,7 +92,10 @@ function App(props) {
     size = markup.slice(16, 18);
 
   //Color Picker config
+  // Box color
   const [color, setColor] = useState('#3C6AAA');
+  // Background color
+  const [color2, setColor2] = useState('#fff');
 
   const styles = {
     backgroundColor: color,
@@ -103,18 +107,32 @@ function App(props) {
     transform: `translate3d(${translateX.value}px, ${translateY.value}px, 0px)`,
     height: `${height.value}px`,
     width: `${width.value}px`,
+    transition: 'ease all 500ms',
   };
 
   return (
     <div>
       <h1>CSS Visualizer</h1>
+
+      <ChromePicker
+        color={color2}
+        onChange={(color) => {
+          setColor2(color.hex);
+        }}
+      />
       <ChromePicker
         color={color}
         onChange={(color) => {
           setColor(color.hex);
         }}
       />
-      <div className="sliders">
+
+      <div className="sliders grid">
+        <div>
+          <h3>
+            Box Color <Test />
+          </h3>
+        </div>
         <div>
           <h3>Size</h3>
           {size}
