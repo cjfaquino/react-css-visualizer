@@ -16,7 +16,24 @@ h1 {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(auto-fit, 165px);
+  /* grid-template-columns: repeat(4, 260px); */
   justify-content: space-between;
+}
+
+@media (min-width: 730px) and (max-width: 1500px) {
+  .grid {
+    grid-template-columns: repeat(4, 165px);
+    justify-content: center;
+  }
+}
+
+.windowSizer {
+  text-align: center;
+  color: rgb(168, 168, 168);
+  font-weight: 900;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .sliders {

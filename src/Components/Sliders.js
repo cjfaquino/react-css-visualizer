@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Boxes from './Boxes';
 import ColorPicker from './ColorPicker';
+import WindowSize from './WindowSize';
 import './slider.css';
 
 function App(props) {
@@ -61,7 +62,9 @@ function App(props) {
     paddingLeft = useSlider(0, 15, 2, 'Padding Left', 'paddingLeft', 'em');
 
   const borderRadiusP = useSlider(0, 50, 0, 'Border Radius', 'borderRadiusP', '%'),
-    borderWidth = useSlider(0, 50, 1, 'Border Width', 'borderWidth', 'px');
+    borderWidth = useSlider(0, 50, 1, 'Border Width', 'borderWidth', 'px'),
+    opacity = useSlider(0, 1, 1, 'Opacity', 'opacity', '');
+  opacity.step = 0.01;
 
   const boxShadowX = useSlider(-50, 50, 5, 'Shadow X', 'boxShadowX', 'px'),
     boxShadowY = useSlider(-50, 50, 5, 'Shadow Y', 'boxShadowY', 'px'),
@@ -78,7 +81,7 @@ function App(props) {
     rotateX = useSlider(-1, 1, 0, 'Rotate X', 'rotateX', ''),
     rotateY = useSlider(-1, 1, 0, 'Rotate Y', 'rotateY', ''),
     rotateA = useSlider(-180, 180, 180, 'Rotate Angle', 'rotateA', 'deg');
-  rotateZ.step = rotateY.step = rotateX.step = 0.05;
+  rotateZ.step = rotateY.step = rotateX.step = 0.01;
 
   const height = useSlider(0, 500, 100, 'Height', 'height', 'px'),
     width = useSlider(0, 1500, 100, 'Width', 'width', 'px');
@@ -117,6 +120,7 @@ function App(props) {
     textShadowBlur,
     fontSize,
     fontWeight,
+    opacity,
   ];
 
   // Style markup with .map
@@ -140,7 +144,8 @@ function App(props) {
     transform = markup.slice(14, 20),
     size = markup.slice(20, 22),
     textShadow = markup.slice(22, 25),
-    font = markup.slice(25, 27);
+    font = markup.slice(25, 27),
+    opacityS = markup.slice(27, 28);
 
   // box styles
   const styles = {
@@ -158,6 +163,7 @@ function App(props) {
     textShadow: `${textShadowX.value}px ${textShadowY.value}px ${textShadowBlur.value}px black`,
     fontSize: `${fontSize.value}em`,
     fontWeight: `${fontWeight.value}`,
+    opacity: `${opacity.value}`,
     color: `rgba(${color3.r}, ${color3.g}, ${color3.b}, ${color3.a})`,
   };
 
@@ -167,36 +173,16 @@ function App(props) {
   };
   return (
     <div>
+      <WindowSize className="container" />
       <h1>CSS Visualizer</h1>
       <div className="sliders grid container">
         <div>
-          <h3>Size</h3>
+          <h3>Box-size</h3>
           {size}
-          <h3 className="colorPicker">
-            Box Color{' '}
-            <ColorPicker
-              setColor={color}
-              color={color}
-              handleChange={(color) => {
-                setColor(color.rgb);
-              }}
-            />
-          </h3>
-        </div>
-        <div>
           <h3>Font</h3>
           {font}
-          <h3 className="colorPicker">
-            Font Color{' '}
-            <ColorPicker
-              setColor={color3}
-              color={color3}
-              handleChange={(color3) => {
-                setColor3(color3.rgb);
-              }}
-            />
-          </h3>
         </div>
+
         <div>
           <h3>Margin</h3>
           {margin}
@@ -208,16 +194,8 @@ function App(props) {
         <div>
           <h3>Border</h3>
           {border}
-          <h3 className="colorPicker">
-            Background Color{' '}
-            <ColorPicker
-              setColor={color2}
-              color={color2}
-              handleChange={(color2) => {
-                setColor2(color2.rgb);
-              }}
-            />
-          </h3>
+          <h3>Opacity</h3>
+          {opacityS}
         </div>
         <div>
           <h3>Text-shadow</h3>
@@ -231,7 +209,40 @@ function App(props) {
           <h3>Transform</h3>
           {transform}
         </div>
+        <div>
+          <h3 className="colorPicker">
+            Box Color{' '}
+            <ColorPicker
+              setColor={color}
+              color={color}
+              handleChange={(color) => {
+                setColor(color.rgb);
+              }}
+            />
+          </h3>
+          <h3 className="colorPicker">
+            Font Color{' '}
+            <ColorPicker
+              setColor={color3}
+              color={color3}
+              handleChange={(color3) => {
+                setColor3(color3.rgb);
+              }}
+            />
+          </h3>
+          <h3 className="colorPicker">
+            Background Color{' '}
+            <ColorPicker
+              setColor={color2}
+              color={color2}
+              handleChange={(color2) => {
+                setColor2(color2.rgb);
+              }}
+            />
+          </h3>
+        </div>
       </div>
+
       <Boxes style={styles} bgStyle={bgStyle} />
     </div>
   );
