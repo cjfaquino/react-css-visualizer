@@ -275,6 +275,7 @@ export default function App() {
         </div>
       </nav>
       <h1 ref={myRef}>CSS Visualizer</h1>
+      {/* Otherwise sliderMenu loads on page load on mobile for a brief moment*/}
       {windowSize.width >= 560 ? sliderMenu : !close && sliderMenu}
       <Boxes style={styles} bgStyle={bgStyle} />
     </div>
