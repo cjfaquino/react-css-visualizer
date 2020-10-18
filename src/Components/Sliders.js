@@ -3,8 +3,13 @@ import Boxes from './Boxes';
 import ColorPicker from './ColorPicker';
 import WindowSize from './WindowSize';
 import './slider.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 function App(props) {
+  // Navbar config
+  const [close, setClose] = useState(true);
+
   //Color Picker config
   // BOX color
   const [color, setColor] = useState({
@@ -166,83 +171,94 @@ function App(props) {
     opacity: `${opacity.value}`,
     color: `rgba(${color3.r}, ${color3.g}, ${color3.b}, ${color3.a})`,
   };
-
   // background style
   const bgStyle = {
     backgroundColor: `rgba(${color2.r}, ${color2.g}, ${color2.b}, ${color2.a})`,
   };
+
+  const sliderMenu = (
+    <div
+      className={
+        close && window.innerWidth <= 560 ? 'sliders grid container menu hidden' : 'sliders grid container menu visible'
+      }
+    >
+      <div>
+        <h3>Box-size</h3>
+        {size}
+        <h3>Font</h3>
+        {font}
+      </div>
+      <div>
+        <h3>Margin</h3>
+        {margin}
+      </div>
+      <div>
+        <h3>Padding</h3>
+        {padding}
+      </div>
+      <div>
+        <h3>Border</h3>
+        {border}
+        <h3>Opacity</h3>
+        {opacityS}
+      </div>
+      <div>
+        <h3>Text-shadow</h3>
+        {textShadow}
+      </div>
+      <div>
+        <h3>Box-shadow</h3>
+        {boxShadow}
+      </div>
+      <div>
+        <h3>Transform</h3>
+        {transform}
+      </div>
+      <div>
+        <h3 className="colorPicker">
+          Box Color{' '}
+          <ColorPicker
+            setColor={color}
+            color={color}
+            handleChange={(color) => {
+              setColor(color.rgb);
+            }}
+          />
+        </h3>
+        <h3 className="colorPicker">
+          Font Color{' '}
+          <ColorPicker
+            setColor={color3}
+            color={color3}
+            handleChange={(color3) => {
+              setColor3(color3.rgb);
+            }}
+          />
+        </h3>
+        <h3 className="colorPicker">
+          Background Color{' '}
+          <ColorPicker
+            setColor={color2}
+            color={color2}
+            handleChange={(color2) => {
+              setColor2(color2.rgb);
+            }}
+          />
+        </h3>
+      </div>
+    </div>
+  );
+
   return (
     <div>
       <WindowSize className="container" />
+      <nav className={window.innerWidth <= 560 ? 'navbar' : 'hidden'}>
+        <div className="menuIcon" onClick={() => setClose(!close)}>
+          <FontAwesomeIcon icon={faBars} className="faBars" />
+        </div>
+      </nav>
       <h1>CSS Visualizer</h1>
-      <div className="sliders grid container">
-        <div>
-          <h3>Box-size</h3>
-          {size}
-          <h3>Font</h3>
-          {font}
-        </div>
-
-        <div>
-          <h3>Margin</h3>
-          {margin}
-        </div>
-        <div>
-          <h3>Padding</h3>
-          {padding}
-        </div>
-        <div>
-          <h3>Border</h3>
-          {border}
-          <h3>Opacity</h3>
-          {opacityS}
-        </div>
-        <div>
-          <h3>Text-shadow</h3>
-          {textShadow}
-        </div>
-        <div>
-          <h3>Box-shadow</h3>
-          {boxShadow}
-        </div>
-        <div>
-          <h3>Transform</h3>
-          {transform}
-        </div>
-        <div>
-          <h3 className="colorPicker">
-            Box Color{' '}
-            <ColorPicker
-              setColor={color}
-              color={color}
-              handleChange={(color) => {
-                setColor(color.rgb);
-              }}
-            />
-          </h3>
-          <h3 className="colorPicker">
-            Font Color{' '}
-            <ColorPicker
-              setColor={color3}
-              color={color3}
-              handleChange={(color3) => {
-                setColor3(color3.rgb);
-              }}
-            />
-          </h3>
-          <h3 className="colorPicker">
-            Background Color{' '}
-            <ColorPicker
-              setColor={color2}
-              color={color2}
-              handleChange={(color2) => {
-                setColor2(color2.rgb);
-              }}
-            />
-          </h3>
-        </div>
-      </div>
-
+      {sliderMenu}
       <Boxes style={styles} bgStyle={bgStyle} />
     </div>
   );

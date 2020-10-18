@@ -25,12 +25,13 @@ function App(props) {
   const color = props.color;
   const styles = {
     color: {
-      width: '80px',
-      height: '15px',
+      width: '100px',
+      height: '20px',
       borderRadius: '2px',
       background: `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`,
     },
     swatch: {
+      marginTop: `10px`,
       padding: '.125em',
       background: '#ccc',
       borderRadius: '1px',
