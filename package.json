@@ -1,6 +1,6 @@
 {
-  "homepage": "https://css-helper.cjfaquino.com",
-  "name": "react-csshelper",
+  "homepage": "http://css.cjfaquino.com",
+  "name": "react-cssvisualizer",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
