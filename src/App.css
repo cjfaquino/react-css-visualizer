@@ -60,8 +60,11 @@ h3 {
 }
 
 .sliders {
-  padding: 0 1em;
+  padding: 1em;
   margin-bottom: 1em;
+  background-color: rgb(240, 240, 240);
+  border-radius: 10px;
+  border: 1px solid rgb(211, 211, 211);
 }
 
 .slider {
@@ -70,14 +73,12 @@ h3 {
 .boxes {
   height: 100%;
   z-index: 10;
+  text-align: center;
 }
 
 .box {
   text-align: center;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
   color: white;
   overflow: hidden;
   transition: ease-in-out 1000ms;

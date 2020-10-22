@@ -30,9 +30,9 @@ export default function App() {
 
   // background color
   const [color2, setColor2] = useState({
-    r: '240',
-    g: '240',
-    b: '240',
+    r: '255',
+    g: '255',
+    b: '255',
     a: '1',
   });
   // font color
